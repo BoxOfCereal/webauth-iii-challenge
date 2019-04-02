@@ -5,8 +5,9 @@ const users = require("./usersModel");
 const restricted = require("../auth/restricted-middleware");
 
 router.get("/", restricted, (req, res) => {
+  const { department } = req.decodedJwt;
   users
-    .find()
+    .findByDepartment(department)
     .then(users => {
       res.status(200).json(users);
     })

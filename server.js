@@ -8,7 +8,7 @@ const server = express();
 server.use(express.json());
 server.use(cors());
 
-const userRoutes = require("./users-folder/userRoutes");
+const userRoutes = require("./users-folder/userRouter");
 server.use("/api/users", userRoutes);
 const authRoutes = require("./auth/authRouter");
 server.use("/api/auth", authRoutes);

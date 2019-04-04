@@ -37,6 +37,7 @@ router.post("/register", (req, res) => {
   users
     .add(user)
     .then(u => {
+      // realistically you would want to return a token here
       res.status(201).json({ message: `created user`, u });
     })
     .catch(error => res.status(500).json({ error }));

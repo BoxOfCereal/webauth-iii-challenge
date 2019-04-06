@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route, NavLink, withRouter } from "react-router-dom";
 import Login from "./Login/Login";
 import Users from "./Users/Users";
+import Register from "./Register/Register";
 
 import "./App.css";
 require("dotenv").config();
@@ -17,6 +18,8 @@ class App extends Component {
       <>
         <header>
           <nav>
+            <NavLink to="/register">Register</NavLink>
+            &nbsp;|&nbsp;
             <NavLink to="/login"> Login</NavLink>
             &nbsp;|&nbsp;
             <NavLink to="/users"> Users</NavLink>
@@ -27,6 +30,7 @@ class App extends Component {
         <main>
           <Route path="/login" component={Login} />
           <Route path="/users" component={Users} />
+          <Route path="/register" component={Register} />
         </main>
       </>
     );

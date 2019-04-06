@@ -17,10 +17,9 @@ const Users = () => {
         }
       };
       // make the call to the API
-      const result = await axios.get(
-        "http://localhost:9000/api/users/",
-        reqOptions
-      );
+      const URL = process.env.REACT_APP_API_URL || `http://localhost:9000/api`;
+      console.log(URL);
+      const result = await axios.get(`${URL}/users`, reqOptions);
       // get the users from the result and then set the users
       console.log(result);
       setUserList(result.data);

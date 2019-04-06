@@ -4,6 +4,7 @@ import Login from "./Login/Login";
 import Users from "./Users/Users";
 
 import "./App.css";
+require("dotenv").config();
 
 class App extends Component {
   logout = () => {

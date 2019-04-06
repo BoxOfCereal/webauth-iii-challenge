@@ -9,7 +9,9 @@ require("dotenv").config();
 
 class App extends Component {
   logout = () => {
+    //Remove the Jason Webb token from local storage
     localStorage.removeItem("jwt");
+    //<Redirect to="/login" />
     this.props.history.push("/login");
   };
 

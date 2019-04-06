@@ -18,12 +18,12 @@ const Users = () => {
       };
       // make the call to the API
       const result = await axios.get(
-        "http://localhost:900/api/users/",
+        "http://localhost:9000/api/users/",
         reqOptions
       );
       // get the users from the result and then set the users
-      const { users } = result.data;
-      setUserList(users);
+      console.log(result);
+      setUserList(result.data);
     };
 
     fetchData();

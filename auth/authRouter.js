@@ -27,6 +27,7 @@ function generateToken(user) {
 router.post("/register", (req, res) => {
   //get credentials off body
   let user = req.body;
+  console.log(user);
   //hash the password
   const salt = 10;
   const hash = bcrypt.hashSync(user.password, salt);
@@ -37,9 +38,17 @@ router.post("/register", (req, res) => {
   users
     .add(user)
     .then(u => {
-      res.status(201).json({ message: `created user`, u });
+      // realistically you would want to return a token here
+      const token = generateToken(user);
+      res.status(201).json({ message: `created user`, token });
     })
-    .catch(error => res.status(500).json({ error }));
+    .catch(error => {
+      if (error.errno === 19) {
+        res.status(422);
+      } else {
+        res.status(500).json({ error });
+      }
+    });
 });
 
 router.post("/login", (req, res) => {

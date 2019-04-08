@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
   if (token) {
     jwt.verify(token, secret, (error, decodedToken) => {
       if (error) {
-        // verification error possibly tampering, or expired that
+        // verification error possibly tampering, or expired
         console.log(error);
         res.status(403).json({ message: "unauthorized" });
       } else {
